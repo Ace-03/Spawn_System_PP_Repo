@@ -3,69 +3,154 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
 
 public class Client : MonoBehaviour
 {
-    public int NumberOfWheels;
-    public bool Engine;
-    public int Passengers;
-    public bool Cargo;
-
-    private int WheelNum;
-    private int PeopleNum;
+    public string Mark;
+    public string Element;
+    public string Size;
+    //public bool Cargo;
 
     public TextMeshProUGUI Output;
 
-    public Toggle EngineToggle;
-    public Toggle CargoToggle;
+    //public Toggle EngineToggle;
+    //public Toggle CargoToggle;
 
-    public TMP_InputField WheelAmount;
-    public TMP_InputField PeopleAmount;
+    public TMP_Dropdown DragonElement;
+    public TMP_Dropdown DragonMark;
+    public TMP_Dropdown DragonSize;
 
-    void Start()
-    {
-        NumberOfWheels = Mathf.Max(NumberOfWheels, 1);
-        Passengers = Mathf.Max(Passengers, 1);
-        Engine = Cargo;
+    public GameObject Fire01;
+    public GameObject Fire02;
+    public GameObject Fire03;
 
-        VehicleRequirements requirements = new VehicleRequirements();
-        requirements.NumberOfWheels = NumberOfWheels;
-        requirements.Engine = Engine;
-        requirements.Passengers = Passengers;
+    public GameObject Ice01;
+    public GameObject Ice02;
+    public GameObject Ice03;
 
-        IVehicle v = GetVehicle(requirements);
-        Output.text = v.ToString();
+    public GameObject Lightning01;
+    public GameObject Lightning02;
+    public GameObject Lightning03;
 
-        Debug.Log(v);
-    }
+    //public TMP_InputField WheelAmount;
+    //public TMP_InputField LegAmount;
 
     public void Create()
     {
-        NumberOfWheels = int.Parse(WheelAmount.text);
-        Passengers = int.Parse(PeopleAmount.text);
+        //NumberOfWings = int.Parse(WheelAmount.text);
+        //NumberOfLegs = int.Parse(LegAmount.text);
 
-        NumberOfWheels = Mathf.Max(NumberOfWheels, 1);
-        Passengers = Mathf.Max(Passengers, 1);
-        Engine = Cargo;
+        //NumberOfWings = Mathf.Max(NumberOfWings, 1);
+        //NumberOfLegs = Mathf.Max(NumberOfLegs, 1);
 
-        EngineToggle.isOn = Cargo;
+        //Engine = Cargo;
+
+        //EngineToggle.isOn = Cargo;
 
         VehicleRequirements requirements = new VehicleRequirements();
-        requirements.NumberOfWheels = NumberOfWheels;
-        requirements.Engine = Engine;
-        requirements.Passengers = Passengers;
+        requirements.Mark = Mark;
+        requirements.Element = Element;
+        requirements.Size = Size;
+
+        IDragon v = GetVehicle(requirements);
+        
+        GameObject Egg = Instantiate(v);
+
+        Output.text = v.ToString();
+        //Debug.Log(v);
+
+        //Debug.Log("Element = " + Element);
+        //Debug.Log("Wings = " + NumberOfWings);
+        //Debug.Log("Legs = " + NumberOfLegs);
+    }
+
+    public void ChangeElement()
+    {
+        //Element = DragonElement.options[DragonElement.value].text;
+        switch (DragonElement.value)
+        {
+            case 0:
+                Element = "Fire";
+                break;
+            case 1:
+                Element = "Ice";
+                break;
+            case 2:
+                Element = "Lightning";
+                break;
+        }
+    }
+
+    public void ChangeMark()
+    {
+        //Element = DragonElement.options[DragonElement.value].text;
+        switch (DragonMark.value)
+        {
+            case 0:
+                Mark = "Circle";
+                break;
+            case 1:
+                Mark = "Square";
+                break;
+            case 2:
+                Mark = "Triangle";
+                break;
+        }
+    }
+
+    public void ChangeSize()
+    {
+        //Element = DragonElement.options[DragonElement.value].text;
+        switch (DragonSize.value)
+        {
+            case 0:
+                Element = "S";
+                break;
+            case 1:
+                Element = "M";
+                break;
+            case 2:
+                Element = "L";
+                break;
+        }
+    }
+
+    private static IDragon GetVehicle(VehicleRequirements requirements)
+    {
+        VehicleFactory factory = new VehicleFactory(requirements);
+        return factory.Create();
+    }
+
+    /*
+    void Start()
+    {
+        NumberOfWings = Mathf.Max(NumberOfWings, 1);
+        NumberOfLegs = Mathf.Max(NumberOfLegs, 1);
+        
+        //Engine = Cargo;
+
+        VehicleRequirements requirements = new VehicleRequirements();
+        requirements.NumberOfWings = NumberOfWings;
+        requirements.Element = Element;
+        requirements.NumberOfLegs = NumberOfLegs;
 
         IVehicle v = GetVehicle(requirements);
         Output.text = v.ToString();
+
         Debug.Log(v);
     }
+    */
 
+
+
+    /*
     public void ToggleChangeEngine(bool tickOn)
     {
         if (tickOn)
-            Engine = true; 
+            Element = true; 
         else 
-            Engine = false;
+            Element = false;
     }
 
     public void ToggleChangeCargo(bool tickOn)
@@ -75,10 +160,5 @@ public class Client : MonoBehaviour
         else
             Cargo = false;
     }
-
-    private static IVehicle GetVehicle(VehicleRequirements requirements)
-    {
-        VehicleFactory factory = new VehicleFactory(requirements);
-        return factory.Create();
-    }
+    */
 }
