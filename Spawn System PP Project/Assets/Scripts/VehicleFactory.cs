@@ -44,10 +44,12 @@ public class VehicleFactory : AbstractVehicleFactory
         {
             switch (requirements.Mark)
             {
-                case "Circle":
+                case "Type1":
                     return new Fire1();
-                case "Square":
+                case "Type2":
                     return new Fire2();
+                case "Type3":
+                    return new Fire3();
             }
             return new Fire1();
         }
@@ -59,10 +61,12 @@ public class VehicleFactory : AbstractVehicleFactory
         {
             switch (requirements.Mark)
             {
-                case "Circle":
+                case "Type1":
                     return new Ice1();
-                case "Square":
+                case "Type2":
                     return new Ice2();
+                case "Type3":
+                    return new Ice3();
             }
             return new Ice1();
         }
@@ -74,10 +78,12 @@ public class VehicleFactory : AbstractVehicleFactory
         {
             switch (requirements.Mark)
             {
-                case "Circle":
+                case "Type1":
                     return new Lightning1();
-                case "Square":
+                case "Type2":
                     return new Lightning2();
+                case "Type3":
+                    return new Lightning3();
             }
             return new Lightning1();
         }

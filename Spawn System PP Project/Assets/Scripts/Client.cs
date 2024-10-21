@@ -33,6 +33,7 @@ public class Client : MonoBehaviour
     public GameObject Lightning02;
     public GameObject Lightning03;
 
+    public GameObject dra;
     //public TMP_InputField WheelAmount;
     //public TMP_InputField LegAmount;
 
@@ -55,9 +56,12 @@ public class Client : MonoBehaviour
 
         IDragon v = GetVehicle(requirements);
         
-        GameObject Egg = Instantiate(v);
+        Egg(v);
+
+        //GameObject Egg = 
 
         Output.text = v.ToString();
+        
         //Debug.Log(v);
 
         //Debug.Log("Element = " + Element);
@@ -88,13 +92,13 @@ public class Client : MonoBehaviour
         switch (DragonMark.value)
         {
             case 0:
-                Mark = "Circle";
+                Mark = "Type1";
                 break;
             case 1:
-                Mark = "Square";
+                Mark = "Type2";
                 break;
             case 2:
-                Mark = "Triangle";
+                Mark = "Type3";
                 break;
         }
     }
@@ -120,6 +124,20 @@ public class Client : MonoBehaviour
     {
         VehicleFactory factory = new VehicleFactory(requirements);
         return factory.Create();
+    }
+
+    private void Egg(IDragon v) 
+    {
+        dra = Instantiate(Resources.Load("Assets / Prefabs / " + v.ToString() + ".fbx")) as GameObject; //Assets / Prefabs / Fire_01.fbx
+        /*
+        switch (v.ToString())
+        { 
+            case "Fire01":
+                GameObject dra = Instantiate(Fire01);
+              
+
+        }
+        */
     }
 
     /*

@@ -5,16 +5,15 @@ using UnityEngine;
 
 public interface IDragon { }
 
-public class Fire1 : IDragon 
-{
-    Resources.Load("Assets/Scripts/MyPrefab") as GameObject;
-    
-}
+public class Fire1 : IDragon {}
 public class Fire2 : IDragon { }
+public class Fire3 : IDragon { }
 public class Ice1 : IDragon { }
 public class Ice2 : IDragon { }
+public class Ice3 : IDragon { }
 public class Lightning1 : IDragon { }
 public class Lightning2 : IDragon { }
+public class Lightning3 : IDragon { }
 
 
 
