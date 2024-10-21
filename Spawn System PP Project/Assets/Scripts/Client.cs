@@ -99,8 +99,9 @@ public class Client : MonoBehaviour
     private void Egg(IDragon v)
     {
         dra = Instantiate(Resources.Load(v.ToString()) as GameObject);
-        dra.AddComponent<Rigidbody>();
         dra.AddComponent<CapsuleCollider>();
+        dra.AddComponent<Rigidbody>();
+        
 
         switch (Size)
         {
