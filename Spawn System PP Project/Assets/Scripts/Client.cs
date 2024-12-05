@@ -99,7 +99,8 @@ public class Client : MonoBehaviour
     private void Egg(IDragon v)
     {
         dra = Instantiate(Resources.Load(v.ToString()) as GameObject);
-        dra.AddComponent<CapsuleCollider>();
+        //dra.AddComponent<CapsuleCollider>();
+        dra.AddComponent(typeof(CapsuleCollider));
         Rigidbody rb = dra.AddComponent<Rigidbody>();
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
