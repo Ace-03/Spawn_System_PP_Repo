@@ -100,8 +100,8 @@ public class Client : MonoBehaviour
     {
         dra = Instantiate(Resources.Load(v.ToString()) as GameObject);
         dra.AddComponent<CapsuleCollider>();
-        dra.AddComponent<Rigidbody>();
-        
+        Rigidbody rb = dra.AddComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
         switch (Size)
         {
